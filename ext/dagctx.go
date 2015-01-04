@@ -16,8 +16,8 @@ import (
 //   func (db *DB) Get(ctx context.Context, ...) {}
 //
 // DB.Get may have to stop for two different contexts:
-// - the caller's context
-// - the database's context (what if it is shut down mid-request?)
+//  * the caller's context (caller might cancel)
+//  * the database's context (might be shut down mid-request)
 //
 // WithParents saves the day by allowing us to "merge" contexts
 // and continue on our merry contextual way:
