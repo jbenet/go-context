@@ -4,7 +4,7 @@ import (
 	"sync"
 	"time"
 
-	context "code.google.com/p/go.net/context"
+	context "golang.org/x/net/context"
 )
 
 // WithParents returns a Context that listens to all given

@@ -4,7 +4,7 @@ package ctxext
 import (
 	"time"
 
-	context "code.google.com/p/go.net/context"
+	context "golang.org/x/net/context"
 )
 
 // WithDeadlineFraction returns a Context with a fraction of the
