@@ -1,10 +1,9 @@
 package ctxext
 
 import (
+	"context"
 	"sync"
 	"time"
-
-	context "golang.org/x/net/context"
 )
 
 // WithParents returns a Context that listens to all given

@@ -11,9 +11,8 @@
 package ctxio
 
 import (
+	"context"
 	"io"
-
-	context "golang.org/x/net/context"
 )
 
 type ioret struct {

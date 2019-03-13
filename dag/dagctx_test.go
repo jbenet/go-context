@@ -1,11 +1,10 @@
 package ctxext
 
 import (
+	"context"
 	"math/rand"
 	"testing"
 	"time"
-
-	context "golang.org/x/net/context"
 )
 
 func TestWithParentsSingle(t *testing.T) {

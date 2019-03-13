@@ -1,11 +1,10 @@
 package ctxext
 
 import (
+	"context"
 	"os"
 	"testing"
 	"time"
-
-	context "golang.org/x/net/context"
 )
 
 // this test is on the context tool itself, not our stuff. it's for sanity on ours.
@@ -14,7 +13,8 @@ func TestDeadline(t *testing.T) {
 		t.Skip("timeouts don't work reliably on travis")
 	}
 
-	ctx, _ := context.WithTimeout(context.Background(), 5*time.Millisecond)
+	ctx, cncl := context.WithTimeout(context.Background(), 5*time.Millisecond)
+	defer cncl()
 
 	select {
 	case <-ctx.Done():
@@ -46,8 +46,10 @@ func TestDeadlineFractionHalf(t *testing.T) {
 		t.Skip("timeouts don't work reliably on travis")
 	}
 
-	ctx1, _ := context.WithTimeout(context.Background(), 10*time.Millisecond)
-	ctx2, _ := WithDeadlineFraction(ctx1, 0.5)
+	ctx1, cncl1 := context.WithTimeout(context.Background(), 10*time.Millisecond)
+	defer cncl1()
+	ctx2, cncl2 := WithDeadlineFraction(ctx1, 0.5)
+	defer cncl2()
 
 	select {
 	case <-ctx1.Done():
