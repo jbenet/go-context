@@ -2,11 +2,10 @@ package ctxio
 
 import (
 	"bytes"
+	"context"
 	"io"
 	"testing"
 	"time"
-
-	context "golang.org/x/net/context"
 )
 
 func TestReader(t *testing.T) {
